@@ -37,7 +37,7 @@ def cat(update: Update, context: CallbackContext) -> None:
 
 
 def main():
-    updater = Updater(TOKEN)
+    updater = Updater(TOKEN, use_context=True)
 
     updater.dispatcher.add_handler(CommandHandler("hello", hello))
     updater.dispatcher.add_handler(CommandHandler("draco", draco))
@@ -46,7 +46,6 @@ def main():
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.set_webhook(f"https://draco-but.herokuapp.com/{TOKEN}")
 
-    updater.start_polling()
     updater.idle()
 
 
