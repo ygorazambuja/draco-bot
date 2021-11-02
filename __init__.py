@@ -44,7 +44,7 @@ def main():
     updater.dispatcher.add_handler(CommandHandler("cat", cat))
 
     updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
-    updater.bot.set_webhook(f"https://draco-bot.herokuapp.com/{TOKEN}")
+    updater.bot.set_webhook(f"https://draco-but.herokuapp.com/{TOKEN}")
 
     updater.start_polling()
     updater.idle()
