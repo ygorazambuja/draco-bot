@@ -24,11 +24,14 @@ def draco(update: Update, context: CallbackContext) -> None:
     dolarCotation = getDolarCotationInBrl()
     if draco_quantity > 1:
         update.message.reply_text(
-            f"{int(draco_quantity)} Draco = {dracoInBRL * int(draco_quantity)} BRL"
-            + f"\n1 Dolar = 1 R${dolarCotation}"
+            f"""{int(draco_quantity)} Draco = R$ {dracoInBRL * int(draco_quantity)}
+            \n1 Dolar = 1 R${dolarCotation}""",
         )
     else:
-        update.message.reply_text(f"{int(draco_quantity)} Draco = {dracoInBRL}")
+        update.message.reply_text(
+            f"""1 Draco = R${dracoInBRL}
+            \n1 Dolar = 1 R${dolarCotation}"""
+        )
 
 
 def cat(update: Update, context: CallbackContext) -> None:
