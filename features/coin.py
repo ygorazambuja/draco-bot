@@ -20,3 +20,19 @@ def convertDracoToBRL() -> float:
     draco_price = getDracoPriceInUSD()
     dolar_price = getDolarCotationInBrl()
     return float(draco_price * dolar_price).__round__(2)
+
+
+def convertDracoToBrlAndDolarCotation() -> tuple:
+    """
+    return a tuple with 3 arguments:
+    1. draco price in BRL
+    2. dolar price in BRL
+    3. draco price in USD
+    """
+    draco_price = getDracoPriceInUSD()
+    dolar_price = getDolarCotationInBrl()
+    return (
+        float(draco_price * dolar_price).__round__(2),
+        float(dolar_price).__round__(2),
+        draco_price,
+    )
