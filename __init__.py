@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from features.cat import getCatImage
 
-from features.coin import convertDracoToBRL
+from features.coin import convertDracoToBRL, getDolarCotationInBrl
 
 PORT = int(os.environ.get("PORT", 5000))
 TOKEN = "2060838246:AAG3VqXAq-SBLz_6MXARuY22dwyF8rWF-XA"
@@ -21,10 +21,11 @@ def draco(update: Update, context: CallbackContext) -> None:
         draco_quantity = 1
 
     dracoInBRL = convertDracoToBRL()
-
+    dolarCotation = getDolarCotationInBrl()
     if draco_quantity > 1:
         update.message.reply_text(
             f"{int(draco_quantity)} Draco = {dracoInBRL * int(draco_quantity)} BRL"
+            + f"\n1 Dolar = 1 R${dolarCotation}"
         )
     else:
         update.message.reply_text(f"{int(draco_quantity)} Draco = {dracoInBRL}")
