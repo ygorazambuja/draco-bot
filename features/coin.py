@@ -42,4 +42,4 @@ def getCoinsMessage(draco_quantity: int) -> str:
 
     dracoInBrl, dolarInBrl, dracoInDolar = convertDracoToBrlAndDolarCotation()
 
-    return f"""{int(draco_quantity)} Draco = R$ {dracoInBrl * int(draco_quantity)}\n1 Dolar = 1 R$ {dolarInBrl}\n1 Draco = USD{dracoInDolar}"""
+    return f"""{int(draco_quantity)} Draco = R$ {dracoInBrl * int(draco_quantity)}\n1 Dolar = R$ {dolarInBrl}\n1 Draco = USD{dracoInDolar}"""
