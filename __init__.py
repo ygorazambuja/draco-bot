@@ -3,11 +3,8 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from features.cat import getCatImage
 
-from features.coin import (
-    convertDracoToBRL,
-    convertDracoToBrlAndDolarCotation,
-    getDolarCotationInBrl,
-)
+from features.coin import convertDracoToBrlAndDolarCotation
+
 
 PORT = int(os.environ.get("PORT", 5000))
 TOKEN = "2060838246:AAG3VqXAq-SBLz_6MXARuY22dwyF8rWF-XA"
@@ -29,14 +26,14 @@ def draco(update: Update, context: CallbackContext) -> None:
     if draco_quantity > 1:
         update.message.reply_text(
             f"""{int(draco_quantity)} Draco = R$ {dracoInBrl * int(draco_quantity)}
-            1 Dolar = 1 R$ {dolarInBrl}
-            1 Draco = {dracoInDolar}""",
+        1 Dolar = 1 R$ {dolarInBrl}
+        1 Draco = USD{dracoInDolar}""",
         )
     else:
         update.message.reply_text(
             f"""1 Draco = R${dracoInBrl}
-            1 Dolar = 1 R${dolarInBrl}
-            1 Draco = {dracoInDolar}"""
+        1 Dolar = 1 R${dolarInBrl}
+        1 Draco = USD{dracoInDolar}"""
         )
 
 
@@ -59,7 +56,6 @@ def main():
         url_path=TOKEN,
         webhook_url=f"https://draco-but.herokuapp.com/{TOKEN}",
     )
-    # updater.bot.set_webhook(f"https://draco-but.herokuapp.com/{TOKEN}")
 
     updater.idle()
 
